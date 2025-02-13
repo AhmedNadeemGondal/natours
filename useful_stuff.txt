@@ -1,0 +1,5 @@
+1) Find server on port :____
+netstat -ano | findstr :3000
+
+2) Stop process
+taskkill /PID 18424 /F
