@@ -67,6 +67,27 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
+// Instructor logout
+// exports.logout = (req, res) => {
+//   res.cookie('jwt', 'logged out', {
+//     expires: new Date(Date.now() + 10 * 1000), // Fix here
+//     httpOnly: true,
+//   });
+//   res.status(200).json({
+//     status: 'success',
+//   });
+// };
+
+exports.logout = (req, res) => {
+  res.cookie('jwt', '', {
+    expires: new Date(0), // Expire immediately
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'Strict',
+  });
+  res.status(200).json({ status: 'success' });
+};
+
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) getting the token and check if it exists
   let token;
@@ -101,7 +122,9 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 // Only for rendered pages, no errors!
 exports.isLoggedIn = catchAsync(async (req, res, next) => {
-  console.log(req.cookies);
+  // The instructor refactored this by removing the global catchAsync
+  // and checking if req.cookies.jwt has a valid token, if not catch and return next
+  // THis is handled directly in logout by correctly timing out the cookie so that the browser deletes it
   if (req.cookies.jwt) {
     // 1) Verification token
     const decoded = await promisify(jwt.verify)(

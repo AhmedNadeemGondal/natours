@@ -1,14 +1,14 @@
 /* eslint-disable */
 // import 'core-js/stable';
 // import 'regenerator-runtime/runtime';
-import { login } from './login';
+import { login, logout } from './login';
 import { displayMap } from './mapbox';
 console.log('Hi from the bundle');
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form');
-
+const logOutBtn = document.querySelector('.nav__el--logout');
 // DELEGATION
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
@@ -24,3 +24,9 @@ if (loginForm) {
     login(email, password);
   });
 }
+
+if (logOutBtn) {
+  logOutBtn.addEventListener('click', logout);
+}
+
+console.log('ssss');
