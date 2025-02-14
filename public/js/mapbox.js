@@ -1,9 +1,6 @@
 /* eslint-disable */
 
-const mapElement = document.getElementById('map');
-if (mapElement?.dataset.locations) {
-  const locations = JSON.parse(mapElement.dataset.locations);
-
+export const displayMap = (locations) => {
   function calculateCentroid(locations) {
     let sumLon = 0,
       sumLat = 0;
@@ -96,4 +93,4 @@ if (mapElement?.dataset.locations) {
 
     map.addOverlay(overlay);
   });
-}
+};
