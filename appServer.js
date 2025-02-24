@@ -33,7 +33,7 @@ app.use((req, res, next) => {
   const nonce = Buffer.from(crypto.randomBytes(16)).toString('base64');
   res.setHeader(
     'Content-Security-Policy',
-    `script-src 'self' 'nonce-${nonce}' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;`,
+    `script-src 'self' 'nonce-${nonce}' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://js.stripe.com/v3/;`,
   );
   // res.locals.nonce = nonce; // Pass nonce to templates if needed
   next();

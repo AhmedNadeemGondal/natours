@@ -36,7 +36,7 @@ export const displayMap = (locations) => {
         geometry: new Point(fromLonLat(loc.coordinates)),
         description: loc.description,
         day: loc.day,
-      }),
+      })
   );
 
   const vectorSource = new VectorSource({ features });
@@ -53,7 +53,7 @@ export const displayMap = (locations) => {
   });
 
   const extent = boundingExtent(
-    locations.map((loc) => fromLonLat(loc.coordinates)),
+    locations.map((loc) => fromLonLat(loc.coordinates))
   );
 
   const map = new Map({
@@ -73,7 +73,7 @@ export const displayMap = (locations) => {
     interactions: [new DragPan()],
   });
 
-  map.getView().fit(extent, { size: map.getSize(), padding: [80, 80, 80, 80] });
+  map.getView().fit(extent, { size: map.getSize(), padding: [85, 85, 85, 85] });
 
   const overlay = new Overlay({
     element: document.createElement('div'),

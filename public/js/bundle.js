@@ -34427,7 +34427,7 @@
           controls: [new FullScreen_default(), new ScaleLine_default()],
           interactions: [new DragPan_default()]
         });
-        map.getView().fit(extent, { size: map.getSize(), padding: [80, 80, 80, 80] });
+        map.getView().fit(extent, { size: map.getSize(), padding: [85, 85, 85, 85] });
         const overlay = new Overlay_default({
           element: document.createElement("div"),
           positioning: "bottom-center",
@@ -34482,18 +34482,43 @@
     }
   });
 
+  // public/js/stripe.js
+  var stripe, bookTour;
+  var init_stripe = __esm({
+    "public/js/stripe.js"() {
+      init_axios2();
+      init_alert();
+      stripe = Stripe(
+        "pk_test_51QvyagD3lvfKFns7SJ3vvkkloeWPES8r7kwnRcx2L8LXEVsiko3ljxKZFVWjAh5Rjy4cZzdtyU5YUi8PIBEBoM2Q00vUz0QcdC"
+      );
+      bookTour = (tourId) => __async(void 0, null, function* () {
+        try {
+          const session = yield axios_default.get(
+            `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
+          );
+          yield stripe.redirectToCheckout({ sessionId: session.data.session.id });
+        } catch (err) {
+          console.error("Error booking tour:", err);
+          showAlert("error", err);
+        }
+      });
+    }
+  });
+
   // public/js/index.js
   var require_index = __commonJS({
     "public/js/index.js"(exports) {
       init_login();
       init_mapbox();
       init_updateSettings();
+      init_stripe();
       console.log("Hi from the bundle");
       var mapBox = document.getElementById("map");
       var loginForm = document.querySelector(".form--login");
       var logOutBtn = document.querySelector(".nav__el--logout");
       var userDataForm = document.querySelector(".form-user-data");
       var userPasswordForm = document.querySelector(".form-user-password");
+      var bookBtn = document.getElementById("book-tour");
       if (mapBox) {
         const locations = JSON.parse(mapBox.dataset.locations);
         displayMap(locations);
@@ -34535,6 +34560,12 @@
           document.getElementById("password").value = "";
           document.getElementById("password-confirm").value = "";
         }));
+      if (bookBtn)
+        bookBtn.addEventListener("click", (e) => {
+          e.target.textContent = "Processing...";
+          const { tourId } = e.target.dataset;
+          bookTour(tourId);
+        });
       console.log("ssss");
     }
   });
