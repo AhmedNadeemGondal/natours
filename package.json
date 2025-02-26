@@ -2,9 +2,10 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "Learning node, express and mongoDB",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "start:prod": "$env:NODE_ENV='production'; npx nodemon server.js",
     "watch:js": "esbuild public/js/index.js --bundle --outfile=public/js/bundle.js --target=es6 --watch",
     "build:js": "esbuild public/js/index.js --bundle --outfile=public/js/bundle.js --target=es6 --minify --sourcemap --tree-shaking --legal-comments=none"
