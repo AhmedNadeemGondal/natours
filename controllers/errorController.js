@@ -2,7 +2,7 @@ const AppError = require('../utils/appError');
 
 const handleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value}`;
-  console.log('Here 1');
+  // console.log('Here 1');
   return new AppError(message, 400);
 };
 
@@ -65,7 +65,7 @@ const sendErrorProd = (err, req, res) => {
   // B) RENDERED WEBSITE
   // A) Operational, trusted error: send message to client
   if (err.isOperational) {
-    console.log(err);
+    // console.log(err);
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       msg: err.message,

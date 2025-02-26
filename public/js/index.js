@@ -5,7 +5,7 @@ import { login, logout } from './login';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
-console.log('Hi from the bundle');
+// console.log('Hi from the bundle');
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
@@ -41,7 +41,7 @@ if (userDataForm)
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
+    // console.log(form);
     // const name = document.getElementById('name').value;
     // const email = document.getElementById('email').value;
     // updateSettings({ name, email }, 'data');
@@ -73,4 +73,4 @@ if (bookBtn)
     bookTour(tourId);
   });
 
-console.log('ssss');
+// console.log('ssss');

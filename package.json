@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "$env:NODE_ENV='production'; npx nodemon server.js",
-    "watch:js": "esbuild public/js/index.js --bundle --outfile=public/js/bundle.js --target=es6 --watch"
+    "watch:js": "esbuild public/js/index.js --bundle --outfile=public/js/bundle.js --target=es6 --watch",
+    "build:js": "esbuild public/js/index.js --bundle --outfile=public/js/bundle.js --target=es6 --minify --sourcemap --tree-shaking --legal-comments=none"
   },
   "author": "ahmednadeeemgondal",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "@prettier/plugin-pug": "^3.2.1",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.8.0",
     "cookie-parser": "^1.4.7",
     "core-js": "^3.40.0",
     "dotenv": "^16.4.7",
