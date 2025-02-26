@@ -1,14 +1,15 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
+const rateLimit = require('express-rate-limit').default;
+const helmet = require('helmet').default;
 const xss = require('xss-clean');
 const ExpressMongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const crypto = require('crypto');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrHand = require('./controllers/errorController');
@@ -26,6 +27,8 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL Middlewares
+app.use(cors());
+app.options('*', cors());
 // g) Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
