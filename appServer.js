@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const crypto = require('crypto');
 const compression = require('compression');
 const cors = require('cors');
+const bookingController = require('./controllers/bookingController');
 
 const AppError = require('./utils/appError');
 const globalErrHand = require('./controllers/errorController');
@@ -57,6 +58,12 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, Please try again in an hour',
 });
 app.use('/api', limiter);
+
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingController.handleWebhook,
+);
 
 // d) Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
