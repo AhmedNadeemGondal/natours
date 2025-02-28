@@ -5,6 +5,7 @@ import { login, logout } from './login';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
+import { showAlert } from './alert';
 // console.log('Hi from the bundle');
 
 // DOM ELEMENTS
