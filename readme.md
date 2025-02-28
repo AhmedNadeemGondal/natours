@@ -8,7 +8,7 @@ Natours is a RESTful API and server-side rendered web app built with Node.js, Ex
 
 ## Switch to "railway-deployment" branch
 
-[View Live](https://github.com/AhmedNadeemGondal/natours/tree/railway-deployment)
+[Railway-Deployment](https://github.com/AhmedNadeemGondal/natours/tree/railway-deployment)
 
 ## Features
 
