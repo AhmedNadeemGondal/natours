@@ -5,6 +5,31 @@ header.header
     img(src='/img/logo-white.png', alt='Natours logo')
   nav.nav.nav--user
     if user
+      a#help-btn.nav__el(href='#', title='Help')
+        svg(
+          width='30',
+          height='30',
+          viewBox='0 0 30 30',
+          fill='none',
+          xmlns='http://www.w3.org/2000/svg'
+        )
+          circle(
+            cx='15',
+            cy='15',
+            r='12',
+            stroke='#20bf6b',
+            stroke-width='2',
+            fill='none'
+          )
+          line(
+            x1='12',
+            y1='8',
+            x2='12',
+            y2='14',
+            stroke='#20bf6b',
+            stroke-width='2'
+          )
+          circle(cx='12', cy='17', r='1.5', fill='#20bf6b')
       a.nav__el.nav__el--logout Log out
       a.nav__el(href='/me')
         img.nav__user-img(
@@ -13,5 +38,30 @@ header.header
         )
         span= user.name.split(' ')[0]
     else
+      a#help-btn.nav__el(href='#', title='Help')
+        svg(
+          width='30',
+          height='30',
+          viewBox='0 0 30 30',
+          fill='none',
+          xmlns='http://www.w3.org/2000/svg'
+        )
+          circle(
+            cx='15',
+            cy='15',
+            r='12',
+            stroke='#20bf6b',
+            stroke-width='2',
+            fill='none'
+          )
+          line(
+            x1='15',
+            y1='8',
+            x2='15',
+            y2='16',
+            stroke='#20bf6b',
+            stroke-width='2'
+          )
+          circle(cx='15', cy='20', r='1.5', fill='#20bf6b')
       a.nav__el(href='/login') Log in
       a.nav__el.nav__el--cta(href='#') Sign up

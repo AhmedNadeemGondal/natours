@@ -78,3 +78,84 @@ const alertMessage = document.querySelector('body').dataset.alert;
 if (alertMessage) showAlert('success', alertMessage, 20);
 
 // console.log('ssss');
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const overlay = document.getElementById('recruiter-overlay');
+//   const closeBtn = document.querySelector('.overlay-close');
+
+//   const getCookie = (name) => {
+//     return document.cookie
+//       .split('; ')
+//       .find((row) => row.startsWith(name + '='))
+//       ?.split('=')[1];
+//   };
+
+//   const setCookie = (name, value, days) => {
+//     const expires = new Date();
+//     expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+//     document.cookie = `${name}=${value}; path=/; expires=${expires.toUTCString()}`;
+//   };
+
+//   // Show overlay only if the cookie is not set
+//   if (!getCookie('overlayShown')) {
+//     setTimeout(() => {
+//       overlay.style.display = 'flex'; // Use 'flex' to keep centering
+//     }, 100); // Small delay to avoid flicker
+//     setCookie('overlayShown', 'true', 1);
+//   }
+
+//   closeBtn.addEventListener('click', () => {
+//     overlay.style.display = 'none';
+//   });
+
+//   overlay.addEventListener('click', (event) => {
+//     if (event.target.id === 'recruiter-overlay') {
+//       overlay.style.display = 'none';
+//     }
+//   });
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.getElementById('recruiter-overlay');
+  const closeBtn = document.querySelector('.overlay-close');
+  const helpBtn = document.getElementById('help-btn');
+
+  const getCookie = (name) => {
+    return document.cookie
+      .split('; ')
+      .find((row) => row.startsWith(name + '='))
+      ?.split('=')[1];
+  };
+
+  const setCookie = (name, value, days) => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value}; path=/; expires=${expires.toUTCString()}`;
+  };
+
+  // Show overlay only once per day
+  if (!getCookie('overlayShown')) {
+    setTimeout(() => {
+      overlay.style.display = 'flex';
+    }, 100);
+    setCookie('overlayShown', 'true', 1);
+  }
+
+  // Help button toggles the overlay
+  helpBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    overlay.style.display = 'flex';
+  });
+
+  // Close button hides the overlay
+  closeBtn.addEventListener('click', () => {
+    overlay.style.display = 'none';
+  });
+
+  // Click outside the overlay content hides it
+  overlay.addEventListener('click', (event) => {
+    if (event.target.id === 'recruiter-overlay') {
+      overlay.style.display = 'none';
+    }
+  });
+});
