@@ -1,15 +1,20 @@
 {
   "version": 2,
-  "builds": [{ "src": "server.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "server.js" }],
   "functions": {
-    "api/**/*.js": {
+    "api/index.js": {
       "maxDuration": 60
     }
   },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ],
   "git": {
     "deploymentEnabled": {
-      "main": false
+      "main": false,
+      "railway-deployment": true
     }
   }
 }
