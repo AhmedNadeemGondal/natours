@@ -6,23 +6,18 @@
     }
   },
   "routes": [
-    // 1. Serve static files directly from the public directory
-    // Vercel will look for these paths in your 'public' folder at the root.
     {
-      "src": "/(img|css|js)/(.*)", // Matches /img/, /css/, /js/ and their contents
-      "dest": "/public/$1/$2" // Maps them to the public directory
+      "src": "/(img|css|js)/(.*)",
+      "dest": "/public/$1/$2"
     },
     {
-      "src": "/favicon.png", // Explicitly serve favicon
+      "src": "/favicon.png",
       "dest": "/public/favicon.png"
     },
-    // 2. Route API calls to your serverless function
     {
       "src": "/api/v1/(.*)",
-      "dest": "/api" // This points to your api/index.js function
+      "dest": "/api"
     },
-    // 3. Route all other requests (including root '/' and other view routes) to your serverless function
-    // This ensures your appServer.js (via api/index.js) handles all remaining dynamic requests.
     {
       "src": "/(.*)",
       "dest": "/api"
