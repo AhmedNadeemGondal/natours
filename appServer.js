@@ -33,7 +33,9 @@ app.use(cors());
 app.options('*', cors());
 // g) Serving static files
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(process.cwd(), 'public'))); //resolve path for vercel serverless
+//
+// Disabled and updated vercel.config to seperate static and dynamically/api loaded content
+// app.use(express.static(path.join(process.cwd(), 'public'))); //resolve path for vercel serverless
 
 // a) SET Security HTTP headers
 app.use(helmet());
