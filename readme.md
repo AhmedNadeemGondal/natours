@@ -2,13 +2,17 @@
 
 Natours is a RESTful API and server-side rendered web app built with Node.js, Express, and Pug. It follows best practices for security, authentication, and database management using MongoDB.
 
-## Live Demo
+## API Docs
 
-[View Live](https://natours-production-e277.up.railway.app/)
+[Natours API Postman Docs](https://documenter.getpostman.com/view/40971390/2sAYX8J1r5#4f3402aa-801f-4bf7-b9eb-9b65b91324a3)
 
-## Switch to "railway-deployment" branch
+## Live Demo (Frontend)
 
-[Railway-Deployment](https://github.com/AhmedNadeemGondal/natours/tree/railway-deployment)
+[View Live Vercel Deployment](https://natours-rho-ten.vercel.app/)
+This serverless adaptation is now the main deployment on Vercel.
+
+[View Live Railway Deployment](https://natours-production-e277.up.railway.app/)
+The app was initially deployed to Railway for native Express.js support, but it's no longer active due to expired free credits.
 
 ## Features
 
