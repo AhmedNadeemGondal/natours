@@ -22,7 +22,8 @@ const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
-app.enable('trust proxy');
+// app.enable('trust proxy');
+app.set('trust proxy', 1); //appropiate for deployment to vercel
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +32,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(cors());
 app.options('*', cors());
 // g) Serving static files
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public'))); //resolve path for vercel serverless
 
 // a) SET Security HTTP headers
 app.use(helmet());
