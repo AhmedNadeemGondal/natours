@@ -8,8 +8,11 @@ Natours is a RESTful API and server-side rendered web app built with Node.js, Ex
 
 ## Live Demo (Frontend)
 
-[View Live Railway Deployment](https://natours-production-e277.up.railway.app/)
 [View Live Vercel Deployment](https://natours-rho-ten.vercel.app/)
+This serverless adaptation is now the main deployment on Vercel.
+
+[View Live Railway Deployment](https://natours-production-e277.up.railway.app/)
+The app was initially deployed to Railway for native Express.js support, but it's no longer active due to expired free credits.
 
 ## Features
 
